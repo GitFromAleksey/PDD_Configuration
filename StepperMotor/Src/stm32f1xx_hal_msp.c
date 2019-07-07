@@ -74,9 +74,9 @@ void HAL_MspInit(void)
 
   /* System interrupt init*/
 
-  /** ENABLE: Full SWJ (JTAG-DP + SW-DP): Reset State 
+  /** NONJTRST: Full SWJ (JTAG-DP + SW-DP) but without NJTRST 
   */
-  __HAL_AFIO_REMAP_SWJ_ENABLE();
+  __HAL_AFIO_REMAP_SWJ_NONJTRST();
 
   /* USER CODE BEGIN MspInit 1 */
 
@@ -119,7 +119,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
     PA8     ------> TIM1_CH1 
     */
     GPIO_InitStruct.Pin = GPIO_PIN_8;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
