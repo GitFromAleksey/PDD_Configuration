@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+"steppermotor\startup_stm32f103xb.o"
+"steppermotor\main.o"
+"steppermotor\stm32f1xx_it.o"
+"steppermotor\stm32f1xx_hal_msp.o"
+"steppermotor\stm32f1xx_hal_gpio_ex.o"
+"steppermotor\stm32f1xx_hal_tim.o"
+"steppermotor\stm32f1xx_hal_tim_ex.o"
+"steppermotor\stm32f1xx_hal.o"
+"steppermotor\stm32f1xx_hal_rcc.o"
+"steppermotor\stm32f1xx_hal_rcc_ex.o"
+"steppermotor\stm32f1xx_hal_gpio.o"
+"steppermotor\stm32f1xx_hal_dma.o"
+"steppermotor\stm32f1xx_hal_cortex.o"
+"steppermotor\stm32f1xx_hal_pwr.o"
+"steppermotor\stm32f1xx_hal_flash.o"
+"steppermotor\stm32f1xx_hal_flash_ex.o"
+"steppermotor\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "StepperMotor\StepperMotor.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "StepperMotor.map" -o StepperMotor\StepperMotor.axf
