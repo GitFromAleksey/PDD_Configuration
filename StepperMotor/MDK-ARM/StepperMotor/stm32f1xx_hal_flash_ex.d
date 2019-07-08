@@ -24,3 +24,6 @@ steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32
 steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
+steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
+steppermotor\stm32f1xx_hal_flash_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h

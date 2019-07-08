@@ -1,9 +1,16 @@
 --cpu Cortex-M3
 "steppermotor\startup_stm32f103xb.o"
 "steppermotor\main.o"
+"steppermotor\usb_device.o"
+"steppermotor\usbd_conf.o"
+"steppermotor\usbd_desc.o"
+"steppermotor\usbd_cdc_if.o"
 "steppermotor\stm32f1xx_it.o"
 "steppermotor\stm32f1xx_hal_msp.o"
 "steppermotor\stm32f1xx_hal_gpio_ex.o"
+"steppermotor\stm32f1xx_hal_pcd.o"
+"steppermotor\stm32f1xx_hal_pcd_ex.o"
+"steppermotor\stm32f1xx_ll_usb.o"
 "steppermotor\stm32f1xx_hal_tim.o"
 "steppermotor\stm32f1xx_hal_tim_ex.o"
 "steppermotor\stm32f1xx_hal.o"
@@ -16,6 +23,10 @@
 "steppermotor\stm32f1xx_hal_flash.o"
 "steppermotor\stm32f1xx_hal_flash_ex.o"
 "steppermotor\system_stm32f1xx.o"
+"steppermotor\usbd_core.o"
+"steppermotor\usbd_ctlreq.o"
+"steppermotor\usbd_ioreq.o"
+"steppermotor\usbd_cdc.o"
 --library_type=microlib --strict --scatter "StepperMotor\StepperMotor.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
