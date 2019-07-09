@@ -102,6 +102,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
+	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_4);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_2, GPIO_PIN_SET);
 	
 	MotorStart(&motor1);

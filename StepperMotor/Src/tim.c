@@ -68,7 +68,6 @@ void MX_TIM2_Init(void)
   }
   HAL_TIM_MspPostInit(&htim2);
 
-	HAL_TIM_Base_Start_IT(&htim2);
 }
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
