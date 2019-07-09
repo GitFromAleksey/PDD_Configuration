@@ -1,13 +1,9 @@
-# Prerequisites
 *.d
-
-# Compiled Object files
 *.slo
 *.lo
-**.o
+*.o
 *.crf
-**/*.crf
+StepperMotor/**/*.crf
 **/*.o
 *.obj
 *.a
-

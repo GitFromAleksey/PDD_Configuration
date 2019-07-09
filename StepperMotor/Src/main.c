@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "motors/motor.h"
+#include "modbus/modbus.h"
 #include "stm32f1xx_it.h"
 /* USER CODE END Includes */
 
@@ -54,7 +55,7 @@ Motor motor1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-void Motor1StepCouter(void);
+void Motor1StepCounter(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -69,7 +70,7 @@ void Motor1StepCouter(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	Tim2StepCounter = Motor1StepCouter;
+	
   /* USER CODE END 1 */
   
 
@@ -97,13 +98,13 @@ int main(void)
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
 	
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
-	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_4);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_2, GPIO_PIN_SET);
+	Tim2StepCounter = Motor1StepCounter;
+	//HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
 	
 	MotorStart(&motor1);
   while (1)
@@ -121,7 +122,6 @@ int main(void)
 			//MotorStop(&motor1);
 		}
 		
-		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
 		
     /* USER CODE END WHILE */
 
@@ -175,12 +175,9 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Motor1StepCouter(void)
+void Motor1StepCounter(void)
 {
-//	MotorStepCounter(&motor1);
-//	if(motor1.steps == 10000)
-//		MotorStop(&motor1);
-	
+	MotorStepCounter(&motor1);
 }
 /* USER CODE END 4 */
 
