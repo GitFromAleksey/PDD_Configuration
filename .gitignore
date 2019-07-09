@@ -4,15 +4,10 @@
 # Compiled Object files
 *.slo
 *.lo
-*.o
+**.o
+*.crf
 **/*.crf
 **/*.o
 *.obj
 *.a
 
-# Precompiled Headers
-*.gch
-*.pch
-
-.project
-/Debug/

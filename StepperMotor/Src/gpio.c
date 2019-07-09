@@ -77,27 +77,27 @@ void SetDirMotor1(uint16_t dir)
 	
 	if(dir == 0)
 	{
-		pinState = GPIO_PIN_SET;
+		pinState = GPIO_PIN_RESET;
 	}
 	else
 	{
-		pinState = GPIO_PIN_RESET;
+		pinState = GPIO_PIN_SET;
 	}
 	
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, pinState);
 }
 
-void SetEnMotor1(uint16_t dir)
+void SetEnMotor1(uint16_t en)
 {
 	GPIO_PinState pinState;
 	
-	if(dir == 0)
+	if(en == 0)
 	{
-		pinState = GPIO_PIN_SET;
+		pinState = GPIO_PIN_RESET;
 	}
 	else
 	{
-		pinState = GPIO_PIN_RESET;
+		pinState = GPIO_PIN_SET;
 	}
 	
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, pinState);	

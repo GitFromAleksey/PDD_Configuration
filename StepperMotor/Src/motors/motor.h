@@ -32,6 +32,7 @@ void MotorInit(
 	void (*TimerStop)(void)
 	);
 
+	void MotorStepCounter(Motor *motor);
 	void MotorStart(Motor *motor);
 	void MotorStop(Motor *motor);
 

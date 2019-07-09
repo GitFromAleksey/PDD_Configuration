@@ -24,7 +24,7 @@ void MotorInit(
 }
 
 // 
-void StepCounter(Motor *motor)
+void MotorStepCounter(Motor *motor)
 {
 	motor->steps++;
 }

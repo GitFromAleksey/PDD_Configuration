@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "motors/motor.h"
+#include "stm32f1xx_it.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,7 +54,7 @@ Motor motor1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void Motor1StepCouter(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -68,7 +69,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	Tim2StepCounter = Motor1StepCouter;
   /* USER CODE END 1 */
   
 
@@ -95,13 +96,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
-
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_2, GPIO_PIN_SET);
+	
+	MotorStart(&motor1);
   while (1)
   {
     HAL_Delay(500);
@@ -110,11 +113,11 @@ int main(void)
 		
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET)
 		{
-			MotorStart(&motor1);
+			//MotorStart(&motor1);
 		}
 		else
 		{
-			MotorStop(&motor1);
+			//MotorStop(&motor1);
 		}
 		
 		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
@@ -171,7 +174,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void Motor1StepCouter(void)
+{
+//	MotorStepCounter(&motor1);
+//	if(motor1.steps == 10000)
+//		MotorStop(&motor1);
+	
+}
 /* USER CODE END 4 */
 
 /**
