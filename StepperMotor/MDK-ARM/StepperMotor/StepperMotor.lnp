@@ -1,6 +1,8 @@
 --cpu Cortex-M3
 "steppermotor\startup_stm32f103xb.o"
 "steppermotor\main.o"
+"steppermotor\gpio.o"
+"steppermotor\tim.o"
 "steppermotor\usb_device.o"
 "steppermotor\usbd_conf.o"
 "steppermotor\usbd_desc.o"

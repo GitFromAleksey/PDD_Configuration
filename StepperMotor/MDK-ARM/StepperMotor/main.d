@@ -28,8 +28,10 @@ steppermotor\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 steppermotor\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
 steppermotor\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
 steppermotor\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
+steppermotor\main.o: ../Inc/tim.h
 steppermotor\main.o: ../Inc/usb_device.h
 steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 steppermotor\main.o: ../Inc/usbd_conf.h
 steppermotor\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 steppermotor\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+steppermotor\main.o: ../Inc/gpio.h
