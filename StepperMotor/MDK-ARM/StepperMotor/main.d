@@ -35,3 +35,4 @@ steppermotor\main.o: ../Inc/usbd_conf.h
 steppermotor\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 steppermotor\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 steppermotor\main.o: ../Inc/gpio.h
+steppermotor\main.o: ../Src/motors/motor.h

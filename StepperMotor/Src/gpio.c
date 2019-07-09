@@ -71,7 +71,37 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
+void SetDirMotor1(uint16_t dir)
+{
+	GPIO_PinState pinState;
+	
+	if(dir == 0)
+	{
+		pinState = GPIO_PIN_SET;
+	}
+	else
+	{
+		pinState = GPIO_PIN_RESET;
+	}
+	
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, pinState);
+}
 
+void SetEnMotor1(uint16_t dir)
+{
+	GPIO_PinState pinState;
+	
+	if(dir == 0)
+	{
+		pinState = GPIO_PIN_SET;
+	}
+	else
+	{
+		pinState = GPIO_PIN_RESET;
+	}
+	
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, pinState);	
+}
 /* USER CODE END 2 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

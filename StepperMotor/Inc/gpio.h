@@ -38,7 +38,8 @@
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void SetDirMotor1(uint16_t dir);
+void SetEnMotor1(uint16_t dir);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

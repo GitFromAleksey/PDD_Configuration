@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "motors/motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+Motor motor1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,6 +94,8 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
+	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,15 +106,19 @@ int main(void)
   {
     HAL_Delay(500);
 
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 		
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET)
+		{
+			MotorStart(&motor1);
+		}
+		else
+		{
+			MotorStop(&motor1);
+		}
 		
-//	  if(htim1.Init.Period-- == 0)
-//	  {
-//		  htim1.Init.Period = 200;
-//	  }
-//	  HAL_TIM_Base_Init(&htim1);
+		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
