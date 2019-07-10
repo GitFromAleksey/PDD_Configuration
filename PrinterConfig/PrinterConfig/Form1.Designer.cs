@@ -30,34 +30,36 @@
         {
             this.components = new System.ComponentModel.Container();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
+            this.comboBoxPorts = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // textBox1
+            // textBoxLog
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 71);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 245);
-            this.textBox1.TabIndex = 0;
+            this.textBoxLog.Location = new System.Drawing.Point(12, 71);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(453, 232);
+            this.textBoxLog.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBoxPorts
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            this.comboBoxPorts.FormattingEnabled = true;
+            this.comboBoxPorts.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxPorts.Name = "comboBoxPorts";
+            this.comboBoxPorts.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPorts.TabIndex = 1;
+            this.comboBoxPorts.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
             // button1
             // 
@@ -71,10 +73,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 45);
+            this.textBox2.Location = new System.Drawing.Point(220, 14);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
+            this.textBox2.Size = new System.Drawing.Size(42, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "11";
             // 
             // button2
             // 
@@ -91,16 +94,25 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(220, 46);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(42, 20);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 328);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBoxPorts);
+            this.Controls.Add(this.textBoxLog);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -111,12 +123,13 @@
         #endregion
 
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBoxLog;
+        private System.Windows.Forms.ComboBox comboBoxPorts;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
