@@ -14,16 +14,14 @@ uint16_t txBufSize;
 uint16_t ReadRegs[READ_REGS_SIZE];
 uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 
-void (*TransmitFunction)(uint8_t* Buf, uint16_t Len);
+uint8_t (*TransmitFunction)(uint8_t* Buf, uint16_t Len);
+int8_t (*ReceiveFunction)(uint8_t* Buf, uint32_t *Len);
 
-void ModbusInit(uint8_t *_rxBuf, uint16_t _rxBufSize, uint8_t *_txBuf, uint16_t _txBufSize,
-								void (*transmitFunction)(uint8_t* Buf, uint16_t Len))
+void ModbusInit( uint8_t (*transmitFunction)(uint8_t* Buf, uint16_t Len),
+								int8_t (*receiveFunction)(uint8_t* Buf, uint32_t *Len) )
 {
-	rxBuf = _rxBuf;
-	rxBufSize = _rxBufSize;
-	txBuf = _txBuf;
-	txBufSize = _txBufSize;
 	TransmitFunction = transmitFunction;
+	ReceiveFunction = receiveFunction;
 }
 
 void ModbusProcess(void)

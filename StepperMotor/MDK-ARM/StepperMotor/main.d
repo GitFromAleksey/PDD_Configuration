@@ -38,3 +38,9 @@ steppermotor\main.o: ../Inc/gpio.h
 steppermotor\main.o: ../Src/motors/motor.h
 steppermotor\main.o: ../Src/modbus/modbus.h
 steppermotor\main.o: ../Inc/stm32f1xx_it.h
+steppermotor\main.o: ../Inc/usbd_cdc_if.h
+steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+steppermotor\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h

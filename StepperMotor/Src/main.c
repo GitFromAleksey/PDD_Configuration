@@ -29,6 +29,7 @@
 #include "motors/motor.h"
 #include "modbus/modbus.h"
 #include "stm32f1xx_it.h"
+#include "usbd_cdc_if.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,7 +98,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
-	
+	ModbusInit(CDC_Transmit_FS, CDC_Receive_FS);
 	
   /* USER CODE END 2 */
 
