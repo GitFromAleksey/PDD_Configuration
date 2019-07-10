@@ -37,29 +37,55 @@ namespace PrinterConfig
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int i = 0;
             byte[] txBuf = new byte[100];
 
-            txBuf[0] = (byte)'<';
-            txBuf[1] = (byte)11;
-            txBuf[2] = (byte)0x03;
-            txBuf[3] = (byte)'D';
-            txBuf[4] = (byte)'F';
-            txBuf[5] = (byte)'F';
-            txBuf[6] = (byte)'F';
-            txBuf[7] = (byte)'F';
-            txBuf[8] = (byte)'F';
-            txBuf[9] = (byte)'>';
+            // '<','Device_ID','Command','FirstRegAddress','CountToRead/WriteData','>'
+            // '<','Device_ID','Command','FirstRegAddress','BytesCount','DataBytes','>'
+
+            txBuf[i++] = (byte)'<';
+            txBuf[i++] = (byte)11;
+            txBuf[i++] = (byte)0x01;
+            txBuf[i++] = (byte)0;
+            txBuf[i++] = (byte)10;
+            txBuf[i++] = (byte)'>';
+
+            //txBuf[i++] = (byte)'<';
+            //txBuf[i++] = (byte)11;
+            //txBuf[i++] = (byte)0x02;
+            //txBuf[i++] = (byte)0;
+            //txBuf[i++] = (byte)1;
+            //txBuf[i++] = (byte)'>';
+
+            //txBuf[i++] = (byte)'<';
+            //txBuf[i++] = (byte)11;
+            //txBuf[i++] = (byte)0x03;
+            //txBuf[i++] = (byte)0;
+            //txBuf[i++] = (byte)1;
+            //txBuf[i++] = (byte)5;
+            //txBuf[i++] = (byte)6;
+            //txBuf[i++] = (byte)'>';
 
             if (serialPort1.IsOpen)
             {
-                serialPort1.Write(txBuf, 0, 10);
+                serialPort1.Write(txBuf, 0, i);
                 //serialPort1.WriteLine(textBox2.Text);
             }
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            rxString += serialPort1.ReadExisting().Replace("\0", "") + "\r\n";
+            byte[] b = new byte[50];
+            int bytesToRead = serialPort1.BytesToRead;
+
+            serialPort1.Read(b, 0, bytesToRead);
+
+            for (int i = 0; i < bytesToRead; ++i)
+            {
+                rxString += b[i].ToString() + ",";
+            }
+            
+            // rxString += serialPort1.ReadExisting() + "\r\n";
         }
 
         private void timer1_Tick(object sender, EventArgs e)
