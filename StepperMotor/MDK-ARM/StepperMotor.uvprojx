@@ -481,6 +481,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>modbus</GroupName>
+          <Files>
+            <File>
+              <FileName>modbus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\modbus\modbus.c</FilePath>
+            </File>
+            <File>
+              <FileName>modbus.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\modbus\modbus.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>globals</GroupName>
+          <Files>
+            <File>
+              <FileName>globals.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\globals\globals.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>

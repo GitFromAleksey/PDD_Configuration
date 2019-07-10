@@ -22,17 +22,19 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 D:\Stm32\Printer\StepperMotor\MDK-ARM\StepperMotor.uvprojx
-Project File Date:  07/09/2019
+Project File Date:  07/10/2019
 
 <h2>Output:</h2>
 Build target 'StepperMotor'
-compiling main.c...
-../Inc/usbd_cdc_if.h(109): error:  #114: function "CDC_Receive_FS" was referenced but not defined
-  static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len);
-../Src/main.c: 0 warnings, 1 error
-compiling usb_device.c...
+compiling modbus.c...
 compiling usbd_cdc_if.c...
-"StepperMotor\StepperMotor.axf" - 1 Error(s), 0 Warning(s).
+../Src/usbd_cdc_if.c(302): warning:  #550-D: parameter "Len" was set but never used
+  int8_t USB_Receive_FS(uint8_t* Buf, uint32_t *Len)
+../Src/usbd_cdc_if.c: 1 warning, 0 errors
+linking...
+Program Size: Code=17004 RO-data=292 RW-data=424 ZI-data=5856  
+FromELF: creating hex file...
+"StepperMotor\StepperMotor.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +53,6 @@ Package Vendor: ARM
 
    * Component: ARM::CMSIS:CORE:3.40.0
       Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
-Target not created.
 </pre>
 </body>
 </html>

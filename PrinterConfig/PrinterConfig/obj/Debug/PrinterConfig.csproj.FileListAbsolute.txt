@@ -1,0 +1,9 @@
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\bin\Debug\PrinterConfig.exe.config
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\bin\Debug\PrinterConfig.exe
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\bin\Debug\PrinterConfig.pdb
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.csprojResolveAssemblyReference.cache
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.Form1.resources
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.Properties.Resources.resources
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.csproj.GenerateResource.Cache
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.exe
+c:\users\hp-g7000\documents\visual studio 2012\Projects\PrinterConfig\PrinterConfig\obj\Debug\PrinterConfig.pdb

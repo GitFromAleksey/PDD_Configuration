@@ -71,7 +71,10 @@ void Motor1StepCounter(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	
+	uint8_t trBufTmp[10];
+	trBufTmp[0] = 'H';
+	trBufTmp[1] = '\r';
+	trBufTmp[2] = '\n';
   /* USER CODE END 1 */
   
 
@@ -95,23 +98,27 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USB_DEVICE_Init();
-  /* USER CODE BEGIN 2 */
+  
+	/* USER CODE BEGIN 2 */
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
-	ModbusInit(CDC_Transmit_FS, CDC_Receive_FS);
 	
+	ModbusInit(CDC_Transmit_FS, USB_Receive_FS);
+	
+	Tim2StepCounter = Motor1StepCounter;
+	
+	MotorStart(&motor1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	Tim2StepCounter = Motor1StepCounter;
-	//HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
-	
-	MotorStart(&motor1);
   while (1)
   {
     HAL_Delay(500);
 
+		//CDC_Transmit_FS(trBufTmp, 3);
+		ModbusProcess();
+		
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 		
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET)

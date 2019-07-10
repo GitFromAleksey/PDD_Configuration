@@ -6,18 +6,19 @@ F (..\Inc\stm32f1xx_hal_conf.h)(0x5D2466FA)()
 F (..\Inc\stm32f1xx_it.h)(0x5D2466F9)()
 F (..\Inc\tim.h)(0x5D2466F7)()
 F (..\Inc\usb_device.h)(0x5D2466F7)()
-F (..\Inc\usbd_cdc_if.h)(0x5D24A8CB)()
+F (..\Inc\usbd_cdc_if.h)(0x5D257D04)()
 F (..\Inc\usbd_conf.h)(0x5D2466F7)()
 F (..\Inc\usbd_desc.h)(0x5D2466F8)()
 F (..\Src\motors\motor.c)(0x5D245EA6)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\motor.o --omf_browse steppermotor\motor.crf --depend steppermotor\motor.d)
-I (..\Src\motors\motor.h)(0x5D249967)
+I (..\Src\motors\motor.h)(0x5D2561E6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54764760)
-F (..\Src\motors\motor.h)(0x5D249967)()
-F (..\Src\modbus\modbus.c)(0x5D24A7E5)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\modbus.o --omf_browse steppermotor\modbus.crf --depend steppermotor\modbus.d)
-I (..\Src\modbus\modbus.h)(0x5D24A7E6)
+F (..\Src\motors\motor.h)(0x5D2561E6)()
+F (..\Src\modbus\modbus.c)(0x5D258891)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\modbus.o --omf_browse steppermotor\modbus.crf --depend steppermotor\modbus.d)
+I (..\Src\modbus\modbus.h)(0x5D256385)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54764760)
-F (..\Src\modbus\modbus.h)(0x5D24A7E6)()
-F (../Src/main.c)(0x5D24A7E6)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\main.o --omf_browse steppermotor\main.crf --depend steppermotor\main.d)
+F (..\Src\modbus\modbus.h)(0x5D256385)()
+F (..\Src\globals\globals.h)(0x5D256250)()
+F (../Src/main.c)(0x5D257D14)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\main.o --omf_browse steppermotor\main.crf --depend steppermotor\main.d)
 I (../Inc/main.h)(0x5D2466FA)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5D219033)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5D2466FA)
@@ -53,10 +54,10 @@ I (../Inc/usbd_conf.h)(0x5D2466F7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54764760)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54764760)
 I (../Inc/gpio.h)(0x5D2466F4)
-I (../Src/motors/motor.h)(0x5D249967)
-I (../Src/modbus/modbus.h)(0x5D24A7E6)
+I (../Src/motors/motor.h)(0x5D2561E6)
+I (../Src/modbus/modbus.h)(0x5D256385)
 I (../Inc/stm32f1xx_it.h)(0x5D2466F9)
-I (../Inc/usbd_cdc_if.h)(0x5D24A8CB)
+I (../Inc/usbd_cdc_if.h)(0x5D257D04)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5D219033)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5D219034)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5D219034)
@@ -160,7 +161,7 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5D219034)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5D219034)
 I (../Inc/usbd_desc.h)(0x5D2466F8)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5D219033)
-I (../Inc/usbd_cdc_if.h)(0x5D24A8CB)
+I (../Inc/usbd_cdc_if.h)(0x5D257D04)
 F (../Src/usbd_conf.c)(0x5D2466F8)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\usbd_conf.o --omf_browse steppermotor\usbd_conf.crf --depend steppermotor\usbd_conf.d)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x5D219029)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x5D219029)
@@ -235,8 +236,8 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5D219034)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5D219034)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5D219034)
 I (../Inc/usbd_desc.h)(0x5D2466F8)
-F (../Src/usbd_cdc_if.c)(0x5D2466F8)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\usbd_cdc_if.o --omf_browse steppermotor\usbd_cdc_if.crf --depend steppermotor\usbd_cdc_if.d)
-I (../Inc/usbd_cdc_if.h)(0x5D24A8CB)
+F (../Src/usbd_cdc_if.c)(0x5D258852)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\usbd_cdc_if.o --omf_browse steppermotor\usbd_cdc_if.crf --depend steppermotor\usbd_cdc_if.d)
+I (../Inc/usbd_cdc_if.h)(0x5D257D04)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5D219033)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5D219034)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5D219034)
