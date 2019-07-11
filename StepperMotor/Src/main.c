@@ -110,10 +110,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-#define ADDR_FLASH_PAGE_63		((uint32_t)0x0800FC00)
+	#define ADDR_FLASH_PAGE_63		((uint32_t)0x0800FC00)
+
 	HAL_FLASH_Unlock();
 	
-	HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data)
+	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63, 0x12345678);
 	
 	HAL_FLASH_Lock();
 	// FLASH_PageErase(uint32_t PageAddress);
@@ -123,7 +124,7 @@ int main(void)
 	
   while (1)
   {
-    //HAL_Delay(500);
+    HAL_Delay(500);
 
 		ModbusProcess();
 		
