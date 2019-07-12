@@ -103,6 +103,8 @@ int main(void)
 	
 	ModbusInit(GetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
 	
+	GlobalsInit();
+	
 	Tim2StepCounter = Motor1StepCounter;
 	
 	MotorStart(&motor1);
@@ -110,19 +112,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	#define ADDR_FLASH_PAGE_63		((uint32_t)0x0800FC00)
 
-	HAL_FLASH_Unlock();
-	
-	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63, 0x12345678);
-	HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63+4, 0x12345679);
-	
-	HAL_FLASH_Lock();
-	// FLASH_PageErase(uint32_t PageAddress);
-	// FLASH_Program_HalfWord(uint32_t Address, uint16_t Data)
-	// HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data)
-	// FLASH_WaitForLastOperation(uint32_t Timeout)
-	
   while (1)
   {
     HAL_Delay(500);

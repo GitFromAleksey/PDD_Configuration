@@ -43,27 +43,27 @@ namespace PrinterConfig
             // '<','Device_ID','Command','FirstRegAddress','CountToRead/WriteData','>'
             // '<','Device_ID','Command','FirstRegAddress','BytesCount','DataBytes','>'
 
+            //txBuf[i++] = (byte)'<';
+            //txBuf[i++] = (byte)11;
+            //txBuf[i++] = (byte)0x01;
+            //txBuf[i++] = (byte)0;
+            //txBuf[i++] = (byte)10;
+            //txBuf[i++] = (byte)'>';
+
             txBuf[i++] = (byte)'<';
-            txBuf[i++] = (byte)11;
-            txBuf[i++] = (byte)0x01;
-            txBuf[i++] = (byte)0;
-            txBuf[i++] = (byte)10;
+            txBuf[i++] = (byte)11;      // ID
+            txBuf[i++] = (byte)0x02;    // cmd
+            txBuf[i++] = (byte)0;       // regAddr
+            txBuf[i++] = (byte)1;       // countReadWriteData
             txBuf[i++] = (byte)'>';
 
             //txBuf[i++] = (byte)'<';
-            //txBuf[i++] = (byte)11;
-            //txBuf[i++] = (byte)0x02;
-            //txBuf[i++] = (byte)0;
-            //txBuf[i++] = (byte)1;
-            //txBuf[i++] = (byte)'>';
-
-            //txBuf[i++] = (byte)'<';
-            //txBuf[i++] = (byte)11;
-            //txBuf[i++] = (byte)0x03;
-            //txBuf[i++] = (byte)0;
-            //txBuf[i++] = (byte)1;
-            //txBuf[i++] = (byte)5;
-            //txBuf[i++] = (byte)6;
+            //txBuf[i++] = (byte)11;      // ID
+            //txBuf[i++] = (byte)0x03;    // cmd
+            //txBuf[i++] = (byte)0;       // regAddr
+            //txBuf[i++] = (byte)2;       // countReadWriteData(ignored)
+            //txBuf[i++] = (byte)0x0E;    // msb data
+            //txBuf[i++] = (byte)0x0F;    // lsb data
             //txBuf[i++] = (byte)'>';
 
             if (serialPort1.IsOpen)

@@ -13,13 +13,13 @@ F (..\Src\motors\motor.c)(0x5D245EA6)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICR
 I (..\Src\motors\motor.h)(0x5D2561E6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54764760)
 F (..\Src\motors\motor.h)(0x5D2561E6)()
-F (..\Src\modbus\modbus.c)(0x5D261779)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\modbus.o --omf_browse steppermotor\modbus.crf --depend steppermotor\modbus.d)
+F (..\Src\modbus\modbus.c)(0x5D27F012)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\modbus.o --omf_browse steppermotor\modbus.crf --depend steppermotor\modbus.d)
 I (..\Src\modbus\modbus.h)(0x5D25D3BE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54764760)
 F (..\Src\modbus\modbus.h)(0x5D25D3BE)()
-F (..\Src\globals\globals.h)(0x5D25D67E)()
-F (..\Src\globals\globals.c)(0x5D275A8A)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\globals.o --omf_browse steppermotor\globals.crf --depend steppermotor\globals.d)
-I (..\Src\globals\globals.h)(0x5D25D67E)
+F (..\Src\globals\globals.h)(0x5D281A8F)()
+F (..\Src\globals\globals.c)(0x5D281A0E)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\globals.o --omf_browse steppermotor\globals.crf --depend steppermotor\globals.d)
+I (..\Src\globals\globals.h)(0x5D281A8F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54764760)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5D219033)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5D2466FA)
@@ -47,7 +47,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5D219033)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5D219033)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5D219033)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5D219033)
-F (../Src/main.c)(0x5D2767F5)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\main.o --omf_browse steppermotor\main.crf --depend steppermotor\main.d)
+F (../Src/main.c)(0x5D281A65)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc-I D:\Stm32\Printer\StepperMotor\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB -DUSE_HAL_DRIVER -DSTM32F103xB-o steppermotor\main.o --omf_browse steppermotor\main.crf --depend steppermotor\main.d)
 I (../Inc/main.h)(0x5D2466FA)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5D219033)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5D2466FA)
@@ -85,7 +85,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54764760)
 I (../Inc/gpio.h)(0x5D2466F4)
 I (../Src/motors/motor.h)(0x5D2561E6)
 I (../Src/modbus/modbus.h)(0x5D25D3BE)
-I (../Src/globals/globals.h)(0x5D25D67E)
+I (../Src/globals/globals.h)(0x5D281A8F)
 I (../Inc/stm32f1xx_it.h)(0x5D2466F9)
 I (../Inc/usbd_cdc_if.h)(0x5D25A88F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5D219033)

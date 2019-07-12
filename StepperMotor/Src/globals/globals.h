@@ -42,6 +42,9 @@ extern uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 #define HeigthPH									ReadWriteRegs[24]
 #define LimitSwitchPHInv					ReadWriteRegs[25]
 
+void GlobalsInit(void);
+
+// ----------- CallBack Funktions ----------- 
 uint16_t GetReadRegValue(uint8_t regNum);
 uint16_t GetReadWriteRegValue(uint8_t regNum);
 uint16_t SetReadWriteRegValue(uint8_t regNum, uint16_t data);

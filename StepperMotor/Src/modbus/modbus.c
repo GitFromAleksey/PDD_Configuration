@@ -2,7 +2,7 @@
 
 // Protocol
 // Incoming packet format
-// '<','Device_ID','Command','FirstRegAddress','CountToRead/WriteData','>'
+// '<','Device_ID','Command','FirstRegAddress','countReadWriteData','>'
 // Ansver packet format
 // '<','Device_ID','Command','FirstRegAddress','BytesCount','DataBytes','>'
 
@@ -67,10 +67,10 @@ void ModbusProcess(void)
 			if(rxBuf[startIndex] == DEVICE_ID)
 			{
 				MakeTransmitPacket(
-					rxBuf[startIndex+1], 
-					rxBuf[startIndex+2], 
-					rxBuf[startIndex+3], 
-					(uint16_t)(rxBuf[startIndex+4]<<8)|rxBuf[startIndex+5]);
+					rxBuf[startIndex+1], // command
+					rxBuf[startIndex+2], // regAddr
+					rxBuf[startIndex+3], // countReadWriteData
+					(uint16_t)(rxBuf[startIndex+4]<<8)|rxBuf[startIndex+5]); // uint16_t data
 			}
 		}
 		
