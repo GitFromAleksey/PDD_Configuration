@@ -8,6 +8,7 @@
 
 #define DEVICE_ID						11
 #define CMD_READ_READ_REGS	0x01
+#define CMD_WRITE_READ_REGS	0x04
 #define CMD_READ_RW_REGS		0x02
 #define CMD_WRITE_RW_REGS		0x03
 #define PACKET_START_SYMBOL	'<'
@@ -20,6 +21,7 @@ uint8_t trBuf[TX_DATA_SIZE];
 uint8_t rxBuf[RX_DATA_SIZE];
 
 uint16_t (*getReadRegValue)(uint8_t regNum);
+uint16_t (*setReadRegValue)(uint8_t regNum, uint16_t data);
 uint16_t (*getReadWriteRegValue)(uint8_t regNum);
 uint16_t (*setReadWriteRegValue)(uint8_t regNum, uint16_t data);
 uint8_t  (*transmitFunction)(uint8_t* Buf, uint16_t Len);
@@ -28,12 +30,14 @@ int8_t   (*receiveFunction)(uint8_t* Buf, uint32_t *Len);
 void MakeTransmitPacket(uint8_t cmd, uint8_t regAddr, uint8_t countReadWrite, uint16_t writeData);
 
 void ModbusInit(uint16_t (*_getReadRegValue)(uint8_t regNum),
+								uint16_t (*_setReadRegValue)(uint8_t regNum, uint16_t data),
 								uint16_t (*_getReadWriteRegValue)(uint8_t regNum),
 								uint16_t (*_setReadWriteRegValue)(uint8_t regNum, uint16_t data),
 								uint8_t (*_transmitFunction)(uint8_t* Buf, uint16_t Len),
 								int8_t (*_receiveFunction)(uint8_t* Buf, uint32_t *Len) )
 {
 	getReadRegValue = _getReadRegValue;
+	setReadRegValue = _setReadRegValue;
 	getReadWriteRegValue = _getReadWriteRegValue;
 	setReadWriteRegValue = _setReadWriteRegValue;
 	
@@ -96,6 +100,14 @@ void MakeTransmitPacket(uint8_t cmd, uint8_t regAddr, uint8_t countReadWrite, ui
 				trBuf[i++] = (uint8_t)(getReadRegValue(j)>>8);
 				trBuf[i++] = getReadRegValue(j) & 0xFF;
 			}
+			trBuf[i++] = '>';
+			transmitFunction(trBuf, i);
+			break;
+		case CMD_WRITE_READ_REGS:
+			setReadRegValue(regAddr, writeData);
+			trBuf[i++] = 2;										// BytesCount
+			trBuf[i++] = (uint8_t)(getReadRegValue(regAddr)>>8);
+			trBuf[i++] = getReadRegValue(regAddr) & 0xFF;
 			trBuf[i++] = '>';
 			transmitFunction(trBuf, i);
 			break;

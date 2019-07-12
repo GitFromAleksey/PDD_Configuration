@@ -20,12 +20,22 @@ namespace PrinterConfig
         // Ansver packet format
         // '<','Device_ID','Command','FirstRegAddress','BytesCount','DataBytes','>'
 
-        byte DeviceID;
+        byte DeviceID = 11;
         const byte CMD_READ_READ_REGS   = 0x01;
+        const byte CMD_WRITE_READ_REGS  = 0x04;
         const byte CMD_READ_RW_REGS     = 0x02;
         const byte CMD_WRITE_RW_REGS    = 0x03;
         const byte PACKET_START_SYMBOL  = (byte)'<';
         const byte PACKET_END_SYMBOL    = (byte)'>';
+
+        const UInt16 ButtonCodeUp = (UInt16)(1 << 0);
+        const UInt16 ButtonCodeDN = (UInt16)(1 << 1);
+        const UInt16 ButtonCodeLF = (UInt16)(1 << 2);
+        const UInt16 ButtonCodeRT = (UInt16)(1 << 3);
+        const UInt16 ButtonCodeOK = (UInt16)(1 << 4);
+        const UInt16 ButtonCodeESC = (UInt16)(1 << 5);
+        const UInt16 ButtonCodeAUTO = (UInt16)(1 << 6);
+        const UInt16 ButtonCode2P = (UInt16)(1 << 7);
 
         public Form1()
         {
@@ -62,7 +72,6 @@ namespace PrinterConfig
             byte[] txBuf = new byte[100];
 
             int ID = int.Parse(textBoxID.Text);
-            DeviceID = (byte)ID;
             int readRdRegNum = int.Parse(textBoxRdRegNum.Text);
 
             txBuf[i++] = (byte)PACKET_START_SYMBOL;
@@ -75,6 +84,8 @@ namespace PrinterConfig
             serialPort1.Write(txBuf, 0, i);
         }
 
+
+
         private void buttonGetRdWrReg_Click(object sender, EventArgs e)
         {
             if (!serialPort1.IsOpen) return;
@@ -83,7 +94,6 @@ namespace PrinterConfig
             byte[] txBuf = new byte[100];
 
             int ID = int.Parse(textBoxID.Text);
-            DeviceID = (byte)ID;
             int readRdRegNum = int.Parse(textBoxRdWrRegNum.Text);
 
             txBuf[i++] = (byte)PACKET_START_SYMBOL;
@@ -104,7 +114,6 @@ namespace PrinterConfig
             byte[] txBuf = new byte[100];
 
             int ID = int.Parse(textBoxID.Text);
-            DeviceID = (byte)ID;
             int readRdRegNum = int.Parse(textBoxWrRegNum.Text);
             int writeData = int.Parse(textBoxWriteData.Text);
 
@@ -119,6 +128,8 @@ namespace PrinterConfig
 
             serialPort1.Write(txBuf, 0, i);
         }
+
+
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
@@ -143,6 +154,11 @@ namespace PrinterConfig
                             rxString += "\r\nRdRegAddr: " + b[i + 3].ToString();
                             rxString += "\r\nRdRegData: " + ((b[i + 5]<<8)|b[i + 6]).ToString();
                         }
+                        if (b[i + 2] == CMD_WRITE_READ_REGS)
+                        {
+                            rxString += "\r\nWrRegAddr: " + b[i + 3].ToString();
+                            rxString += "\r\nWrRegData: " + ((b[i + 5] << 8) | b[i + 6]).ToString();
+                        }
                         if (b[i + 2] == CMD_READ_RW_REGS)
                         {
                             rxString += "\r\nWrRegAddr: " + b[i + 3].ToString();
@@ -163,6 +179,42 @@ namespace PrinterConfig
         {
             textBoxLog.Text = rxString;
         }
+
+        private void buttonLF_Click(object sender, EventArgs e)
+        {
+            UInt16 writeData = ButtonCodeLF;
+            SetRdReg( 0, writeData);
+        }
+        private void buttonRT_Click(object sender, EventArgs e)
+        {
+            UInt16 writeData = ButtonCodeRT;
+            SetRdReg(0, writeData);
+        }
+        private void buttonESC_Click(object sender, EventArgs e)
+        {
+            UInt16 writeData = ButtonCodeESC;
+            SetRdReg(0, writeData);
+        }
+
+        void SetRdReg(byte readRdRegNum, UInt16 writeData)
+        {
+            if (!serialPort1.IsOpen) return;
+
+            int i = 0;
+            byte[] txBuf = new byte[100];
+
+            txBuf[i++] = (byte)PACKET_START_SYMBOL;
+            txBuf[i++] = (byte)DeviceID;                  // ID
+            txBuf[i++] = (byte)CMD_WRITE_READ_REGS;   // cmd
+            txBuf[i++] = (byte)readRdRegNum;        // regAddr
+            txBuf[i++] = (byte)2;                   // countReadWriteData(ignored)
+            txBuf[i++] = (byte)((writeData >> 8) & 0xFF); // msb data
+            txBuf[i++] = (byte)(writeData & 0xFF);      // lsb data
+            txBuf[i++] = (byte)PACKET_END_SYMBOL;
+
+            serialPort1.Write(txBuf, 0, i);
+        }
+
 
 
 

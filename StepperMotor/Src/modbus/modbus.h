@@ -5,6 +5,7 @@
 
 
 void ModbusInit(uint16_t (*GetReadRegValue)(uint8_t regNum),
+								uint16_t (*SetReadRegValue)(uint8_t regNum, uint16_t data),
 								uint16_t (*GetReadWriteRegValue)(uint8_t regNum),
 								uint16_t (*SetReadWriteRegValue)(uint8_t regNum, uint16_t data),
 								uint8_t (*transmitFunction)(uint8_t* Buf, uint16_t Len),

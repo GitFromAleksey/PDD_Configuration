@@ -8,6 +8,17 @@
 
 extern uint16_t ReadRegs[READ_REGS_SIZE];
 
+#define ButtonUp									(uint16_t)(1<<0)
+#define ButtonDN									(uint16_t)(1<<1)
+#define ButtonLF									(uint16_t)(1<<2)
+#define ButtonRT									(uint16_t)(1<<3)
+#define ButtonOK									(uint16_t)(1<<4)
+#define ButtonESC									(uint16_t)(1<<5)
+#define ButtonAUTO								(uint16_t)(1<<6)
+#define Button2P									(uint16_t)(1<<7)
+
+#define ButtonsReg								ReadRegs[0]
+
 extern uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 
 // Common
@@ -46,6 +57,7 @@ void GlobalsInit(void);
 
 // ----------- CallBack Funktions ----------- 
 uint16_t GetReadRegValue(uint8_t regNum);
+uint16_t SetReadRegValue(uint8_t regNum, uint16_t data);
 uint16_t GetReadWriteRegValue(uint8_t regNum);
 uint16_t SetReadWriteRegValue(uint8_t regNum, uint16_t data);
 

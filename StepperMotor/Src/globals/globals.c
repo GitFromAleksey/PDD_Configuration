@@ -87,7 +87,14 @@ uint16_t GetReadRegValue(uint8_t regNum)
 		return 0;
 	return ReadRegs[regNum];
 }
-
+// ------------ CallBack Function
+uint16_t SetReadRegValue(uint8_t regNum, uint16_t data)
+{
+	if(regNum >= READ_REGS_SIZE)
+		return 0;
+	return ReadRegs[regNum] = data;
+	return 1;
+}
 // ------------ CallBack Function
 uint16_t GetReadWriteRegValue(uint8_t regNum)
 {

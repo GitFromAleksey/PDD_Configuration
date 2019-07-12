@@ -101,14 +101,12 @@ int main(void)
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
 	
-	ModbusInit(GetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
+	ModbusInit(GetReadRegValue, SetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
 	
 	GlobalsInit();
 	
 	// copy callback Step Counter from motor module to timer
 	Tim2StepCounter = Motor1StepCounter;
-	
-	MotorStart(&motor1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,6 +116,26 @@ int main(void)
   {
     //HAL_Delay(500);
 
+		if(ButtonsReg & ButtonLF)
+		{
+			MotorStop(&motor1);
+			ButtonsReg &= ~ButtonLF;
+			motor1.SetDir(0);
+			MotorStart(&motor1);
+		}
+		if(ButtonsReg & ButtonRT)
+		{
+			MotorStop(&motor1);
+			ButtonsReg &= ~ButtonRT;
+			motor1.SetDir(1);
+			MotorStart(&motor1);
+		}
+		if(ButtonsReg & ButtonESC)
+		{
+			MotorStop(&motor1);
+			ButtonsReg &= ~ButtonESC;
+		}
+		
 		ModbusProcess();
 		
 		// HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
