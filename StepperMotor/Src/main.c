@@ -105,6 +105,7 @@ int main(void)
 	
 	GlobalsInit();
 	
+	// copy callback Step Counter from motor module to timer
 	Tim2StepCounter = Motor1StepCounter;
 	
 	MotorStart(&motor1);
@@ -115,11 +116,11 @@ int main(void)
 
   while (1)
   {
-    HAL_Delay(500);
+    //HAL_Delay(500);
 
 		ModbusProcess();
 		
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		// HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 			
 		
     /* USER CODE END WHILE */

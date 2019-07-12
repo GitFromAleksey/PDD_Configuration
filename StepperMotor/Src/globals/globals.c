@@ -4,10 +4,7 @@
 #define ADDR_FLASH_PAGE_63		((uint32_t)0x0800FC00) // last memory page
 
 uint16_t ReadRegs[READ_REGS_SIZE];
-
 uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
-
-void LoadAllDataFromFlash(void);
 
 // ------------
 uint32_t ReadOneRegFromFlash(uint32_t regAddr)
@@ -24,63 +21,8 @@ void WriteOneRegToFlash(uint32_t regAddr, uint16_t data)
 }
 
 // ------------
-uint16_t GetReadRegValue(uint8_t regNum)
-{
-	if(regNum >= READ_REGS_SIZE)
-		return 0;
-	return ReadRegs[regNum];
-}
-
-void GlobalsInit(void)
-{
-	uint32_t i = 0;
-	for(i = 0; i < READ_REGS_SIZE; ++i)
-	{
-		ReadRegs[i] = 0;
-	}
-	for(i = 0; i < READ_WRITE_REGS_SIZE; ++i)
-	{
-		if(ReadOneRegFromFlash(i) == 0xFFFFFFFF)
-		{
-			WriteOneRegToFlash(i, 0);
-			ReadWriteRegs[i] = 0;
-		}
-		else
-		{
-			ReadWriteRegs[i] = (uint16_t)ReadOneRegFromFlash(i);
-		}
-	}	
-}
-
-uint16_t GetReadWriteRegValue(uint8_t regNum)
-{
-	if(regNum >= READ_WRITE_REGS_SIZE)
-		return 0;
-	//return ReadWriteRegs[regNum];
-	ReadWriteRegs[regNum] = (*(__IO uint32_t*)( ADDR_FLASH_PAGE_63 + (regNum*4)) );
-	return ReadWriteRegs[regNum];
-}
-
-uint16_t SetReadWriteRegValue(uint8_t regNum, uint16_t data)
-{
-	if(regNum >= READ_WRITE_REGS_SIZE)
-		return 0;
-
-	uint32_t flashData = (*(__IO uint32_t*)( ADDR_FLASH_PAGE_63 + (regNum*4)) );
-	
-	ReadWriteRegs[regNum] = data;
-	
-	if(flashData == 0xFFFFFFFF)
-	{
-		HAL_FLASH_Unlock();
-		HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63+(regNum*4), (uint32_t)data);
-		HAL_FLASH_Lock();
-	}
-	else
-	{
-		LoadAllDataFromFlash();
-		ReadWriteRegs[regNum] = data;
-		
+void EraseFlashPage(void)
+{	
 		FLASH_EraseInitTypeDef eraseInitType;
 		uint32_t pageError = 0;
 		
@@ -106,21 +48,9 @@ uint16_t SetReadWriteRegValue(uint8_t regNum, uint16_t data)
 		HAL_FLASH_Unlock();
 		HAL_FLASHEx_Erase(&eraseInitType, &pageError);
 		HAL_FLASH_Lock();
-
-		HAL_FLASH_Unlock();
-		for(uint32_t i = 0; i < READ_WRITE_REGS_SIZE; ++i)
-		{
-			HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63+(i*4), (uint32_t)ReadWriteRegs[i]);
-		}
-		HAL_FLASH_Lock();
-
-	}
-	
-	return 1;
 }
 
-
-
+// ------------
 void LoadAllDataFromFlash(void)
 {
 	for(uint32_t i = 0; i < READ_WRITE_REGS_SIZE; ++i)
@@ -128,11 +58,76 @@ void LoadAllDataFromFlash(void)
 		ReadWriteRegs[i] = (*(__IO uint32_t*)( ADDR_FLASH_PAGE_63 + (i*4)) );
 	}
 }
+// ------------
+void GlobalsInit(void)
+{
+	uint32_t i = 0;
+	for(i = 0; i < READ_REGS_SIZE; ++i)
+	{
+		ReadRegs[i] = 0;
+	}
+	for(i = 0; i < READ_WRITE_REGS_SIZE; ++i)
+	{
+		if(ReadOneRegFromFlash(i) == 0xFFFFFFFF)
+		{
+			WriteOneRegToFlash(i, 0);
+			ReadWriteRegs[i] = 0;
+		}
+		else
+		{
+			ReadWriteRegs[i] = (uint16_t)ReadOneRegFromFlash(i);
+		}
+	}	
+}
 
-//	HAL_FLASH_Lock();
-//	HAL_FLASH_Unlock();
-//	HAL_FLASH_Lock();
-//	FLASH_PageErase(uint32_t PageAddress);
-//	FLASH_Program_HalfWord(uint32_t Address, uint16_t Data);
-//	HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
-//	FLASH_WaitForLastOperation(uint32_t Timeout);
+// ------------ CallBack Function
+uint16_t GetReadRegValue(uint8_t regNum)
+{
+	if(regNum >= READ_REGS_SIZE)
+		return 0;
+	return ReadRegs[regNum];
+}
+
+// ------------ CallBack Function
+uint16_t GetReadWriteRegValue(uint8_t regNum)
+{
+	if(regNum >= READ_WRITE_REGS_SIZE)
+		return 0;
+	return ReadWriteRegs[regNum];
+	// ReadWriteRegs[regNum] = (*(__IO uint32_t*)( ADDR_FLASH_PAGE_63 + (regNum*4)) );
+	// return ReadWriteRegs[regNum];
+}
+
+// ------------ CallBack Function
+uint16_t SetReadWriteRegValue(uint8_t regNum, uint16_t data)
+{
+	if(regNum >= READ_WRITE_REGS_SIZE)
+		return 0;
+
+	uint32_t flashData = (*(__IO uint32_t*)( ADDR_FLASH_PAGE_63 + (regNum*4)) );
+	
+	ReadWriteRegs[regNum] = data;
+	
+	if(flashData == 0xFFFFFFFF)
+	{
+		HAL_FLASH_Unlock();
+		HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63+(regNum*4), (uint32_t)data);
+		HAL_FLASH_Lock();
+	}
+	else
+	{
+		LoadAllDataFromFlash();
+		ReadWriteRegs[regNum] = data;
+		EraseFlashPage();
+
+		// write all data to flash
+		HAL_FLASH_Unlock();
+		for(uint32_t i = 0; i < READ_WRITE_REGS_SIZE; ++i)
+		{
+			HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, ADDR_FLASH_PAGE_63+(i*4), (uint32_t)ReadWriteRegs[i]);
+		}
+		HAL_FLASH_Lock();
+	}
+	
+	return 1;
+}
