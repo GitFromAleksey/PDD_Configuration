@@ -96,8 +96,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USB_DEVICE_Init();
-  
-	/* USER CODE BEGIN 2 */
+  MX_TIM4_Init();
+  /* USER CODE BEGIN 2 */
 
 	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
 	
