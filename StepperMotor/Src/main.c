@@ -104,9 +104,15 @@ int main(void)
 	ModbusInit(GetReadRegValue, SetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
 	
 	GlobalsInit();
+
+	Tim2StepCounter = Motor1StepCounter;
+	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);// | TIM_CHANNEL_2);
+	HAL_TIM_Base_Start_IT(&htim4);
+//	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
+	
 	
 	// copy callback Step Counter from motor module to timer
-	Tim2StepCounter = Motor1StepCounter;
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,7 +121,10 @@ int main(void)
   while (1)
   {
     //HAL_Delay(500);
-
+		
+		EncoderCnt = (uint16_t)htim4.Instance->CNT;
+		//htim4.Instance->CCMR1;
+		
 		if(ButtonsReg & ButtonLF)
 		{
 			MotorStop(&motor1);
@@ -196,6 +205,7 @@ void SystemClock_Config(void)
 void Motor1StepCounter(void)
 {
 	MotorStepCounter(&motor1);
+	MotorStart(&motor1);
 }
 /* USER CODE END 4 */
 

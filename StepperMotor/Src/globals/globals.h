@@ -3,7 +3,7 @@
 
 #include "stdint.h"
 
-#define READ_REGS_SIZE				1
+#define READ_REGS_SIZE				2
 #define READ_WRITE_REGS_SIZE	26
 
 extern uint16_t ReadRegs[READ_REGS_SIZE];
@@ -18,6 +18,7 @@ extern uint16_t ReadRegs[READ_REGS_SIZE];
 #define Button2P									(uint16_t)(1<<7)
 
 #define ButtonsReg								ReadRegs[0]
+#define EncoderCnt								ReadRegs[1]
 
 extern uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 
