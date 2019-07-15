@@ -54,10 +54,6 @@ void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_SINGLE) != HAL_OK)
-  {
-    Error_Handler();
-  }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
@@ -127,7 +123,7 @@ void MX_TIM4_Init(void)
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 0;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 1;
+  htim4.Init.Period = 9;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
@@ -313,20 +309,23 @@ void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef* tim_encoderHandle)
 } 
 
 /* USER CODE BEGIN 1 */
+
 void Timer2SetMotorSpeed(uint32_t speed)
 {
-	if(speed >= 10000)
-		speed = 10000;
+	if(speed >= 9999)
+		speed = 9999;
 	htim2.Init.Period = speed;
 	HAL_TIM_Base_Init(&htim2);
 }
 void Timer2SetOnePulseMode(void)
 {
+	HAL_TIM_OC_Stop(&htim2, TIM_CHANNEL_2);
 	HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_SINGLE);
 }
 void Timer2SetRunMode(void)
 {
-	HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_REPETITIVE);
+	HAL_TIM_OC_Stop(&htim2, TIM_CHANNEL_2);
+	htim2.Instance->CR1 &= ~TIM_CR1_OPM;
 }
 void Timer2OnOff(uint32_t on_off)
 {
@@ -340,15 +339,34 @@ void Timer2OnOff(uint32_t on_off)
 	}
 }
 
-// old functions
-void Timer2Start(void)
+// ------------
+void Timer3SetMotorSpeed(uint32_t speed)
 {
-	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
+	if(speed >= 9999)
+		speed = 9999;
+	htim3.Init.Period = speed;
+	HAL_TIM_Base_Init(&htim3);
 }
-
-void Timer2Stop(void)
+void Timer3SetOnePulseMode(void)
 {
-	HAL_TIM_OC_Stop(&htim2, TIM_CHANNEL_2);
+	HAL_TIM_OC_Stop(&htim3, TIM_CHANNEL_1);
+	HAL_TIM_OnePulse_Init(&htim3, TIM_OPMODE_SINGLE);
+}
+void Timer3SetRunMode(void)
+{
+	HAL_TIM_OC_Stop(&htim3, TIM_CHANNEL_1);
+	htim3.Instance->CR1 &= ~TIM_CR1_OPM;
+}
+void Timer3OnOff(uint32_t on_off)
+{
+	if(on_off == 0)
+	{
+		HAL_TIM_OC_Stop(&htim3, TIM_CHANNEL_1);
+	}
+	else
+	{
+		HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
+	}
 }
 /* USER CODE END 1 */
 

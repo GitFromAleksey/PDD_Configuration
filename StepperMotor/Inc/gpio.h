@@ -41,9 +41,10 @@ void MX_GPIO_Init(void);
 void SetMotor1En(uint32_t en);
 void SetMotor1Dir(uint32_t dir);
 
-// old functions
-void SetDirMotor1(uint16_t dir);
-void SetEnMotor1(uint16_t dir);
+// -------------------------
+	 
+void SetMotor2En(uint32_t en);
+void SetMotor2Dir(uint32_t dir);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

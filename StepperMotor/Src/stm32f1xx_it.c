@@ -184,13 +184,13 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-//	static uint32_t myTicks = 0;
-//	myTicks++;
-//	if(myTicks == 500)
-//	{
-//		myTicks = 0;
-//		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-//	}
+	static uint32_t myTicks = 0;
+	myTicks++;
+	if(myTicks == 500)
+	{
+		myTicks = 0;
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	}
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -229,8 +229,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
-	
-	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	Tim2StepCounter();
   /* USER CODE END TIM2_IRQn 1 */
 }
 
@@ -245,7 +244,7 @@ void TIM4_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
 	//if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim4))
-		Tim2StepCounter();
+		//Tim2StepCounter();
   /* USER CODE END TIM4_IRQn 1 */
 }
 

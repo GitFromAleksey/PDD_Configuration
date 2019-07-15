@@ -3,7 +3,7 @@
 
 #include "stdint.h"
 
-#define READ_REGS_SIZE				2
+#define READ_REGS_SIZE				3
 #define READ_WRITE_REGS_SIZE	26
 
 extern uint16_t ReadRegs[READ_REGS_SIZE];
@@ -19,6 +19,7 @@ extern uint16_t ReadRegs[READ_REGS_SIZE];
 
 #define ButtonsReg								ReadRegs[0]
 #define EncoderCnt								ReadRegs[1]
+#define Motor1Steps								ReadRegs[2]
 
 extern uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 

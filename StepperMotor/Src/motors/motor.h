@@ -6,13 +6,11 @@
 typedef struct
 {
 	int32_t steps; //
+	uint32_t fewSteps;
+	uint32_t isFewSteps;
 	uint32_t motorSpeed;
-	
-	// old data
-	void (*SetDir)(uint16_t dir);
-	void (*SetEn)(uint16_t en);
-	void (*TimerStart)(void);
-	void (*TimerStop)(void);
+	uint32_t motorIsRun;
+	uint32_t dir;
 	
 	// timer callbacks
 	void (*setMotorSpeed)(uint32_t speed);
@@ -26,10 +24,10 @@ typedef struct
 	
 } Motor;
 
-void MotorInit_2
+void MotorInit
 (
 	Motor *motor,
-	//uint32_t _motorSpeed,
+	uint32_t _motorSpeed,
 	// timer callbacks
 	void (*_setMotorSpeed)(uint32_t speed),
 	void (*_setOnePulseMode)(void),
@@ -41,16 +39,13 @@ void MotorInit_2
 	void (*_setMotorDir)(uint32_t dir)
 );
 
-void MotorInit(
-	Motor *motor, 
-	void (*SetDir)(uint16_t dir),
-	void (*SetEn)(uint16_t en),
-	void (*TimerStart)(void),
-	void (*TimerStop)(void)
-	);
-
-	void MotorStepCounter(Motor *motor);
-	void MotorStart(Motor *motor);
-	void MotorStop(Motor *motor);
+void MotorTakeFewSteps(Motor *motor, uint32_t fewSteps);
+void MotorSetOneStepMode(Motor *motor, uint32_t set_reset);
+void MotorSetSpeed(Motor *motor, uint32_t speed);
+void MotorSetDir(Motor *motor, uint32_t dir);
+void MotorReset(Motor *motor);
+void MotorStepCounter(Motor *motor);
+void MotorStart(Motor *motor);
+void MotorStop(Motor *motor);
 
 #endif // MOTOR_H

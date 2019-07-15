@@ -75,11 +75,11 @@ void SetMotor1En(uint32_t en)
 {
 	if(en == 0)
 	{
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);	
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 	}
 	else
 	{
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);	
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
 	}
 }
 void SetMotor1Dir(uint32_t dir)
@@ -94,38 +94,29 @@ void SetMotor1Dir(uint32_t dir)
 	}	
 }
 
+// -----------------------
 
-// old functions
-void SetDirMotor1(uint16_t dir)
+void SetMotor2En(uint32_t en)
 {
-	GPIO_PinState pinState;
-	
-	if(dir == 0)
-	{
-		pinState = GPIO_PIN_RESET;
-	}
-	else
-	{
-		pinState = GPIO_PIN_SET;
-	}
-	
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, pinState);
-}
-
-void SetEnMotor1(uint16_t en)
-{
-	GPIO_PinState pinState;
-	
 	if(en == 0)
 	{
-		pinState = GPIO_PIN_RESET;
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
 	}
 	else
 	{
-		pinState = GPIO_PIN_SET;
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
 	}
-	
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, pinState);	
+}
+void SetMotor2Dir(uint32_t dir)
+{
+	if(dir == 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);	
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);	
+	}	
 }
 /* USER CODE END 2 */
 

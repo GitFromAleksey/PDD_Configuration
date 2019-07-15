@@ -52,6 +52,7 @@
 
 /* USER CODE BEGIN PV */
 Motor motor1;
+Motor motor2;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,20 +101,37 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
-	//MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
-//	MotorInit_2
-//	(
-//	&motor1,
-//	// timer callbacks
-//	Timer2SetMotorSpeed,
-//	Timer2SetOnePulseMode,
-//	Timer2SetRunMode,
-//	Timer2OnOff,
-//	
-//	// GPIO callbacks
-//	SetMotor1En,
-//	SetMotor1Dir
-//	);
+	// motor1 init
+	MotorInit
+	(
+		&motor1,
+		100,	// motor speed
+		// timer callbacks
+		Timer2SetMotorSpeed,
+		Timer2SetOnePulseMode,
+		Timer2SetRunMode,
+		Timer2OnOff,
+		
+		// GPIO callbacks
+		SetMotor1En,
+		SetMotor1Dir
+	);
+	
+	// motor2 init
+	MotorInit
+	(
+		&motor1,
+		100,	// motor speed
+		// timer callbacks
+		Timer3SetMotorSpeed,
+		Timer3SetOnePulseMode,
+		Timer3SetRunMode,
+		Timer3OnOff,
+		
+		// GPIO callbacks
+		SetMotor2En,
+		SetMotor2Dir	
+	);
 	
 	ModbusInit(GetReadRegValue, SetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
 	
@@ -123,50 +141,50 @@ int main(void)
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);// | TIM_CHANNEL_2);
 	HAL_TIM_Base_Start_IT(&htim4);
 	
+	// motor 2
 	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_SET);	
-//	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
-	
-	
-	// copy callback Step Counter from motor module to timer
+
+	// motor 1
+	HAL_TIM_Base_Start_IT(&htim2);
+	//HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
 	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	//motor1.setMotorSpeed(10);
-	//motor1.SetEn(1);
+	
   while (1)
   {
     //HAL_Delay(500);
 		
 		EncoderCnt = (uint16_t)htim4.Instance->CNT;
-		//htim4.Instance->CCMR1;
+		Motor1Steps = motor1.steps;
 		
 		if(ButtonsReg & ButtonLF)
 		{
-//			MotorStop(&motor1);
-//			ButtonsReg &= ~ButtonLF;
-//			motor1.SetDir(0);
-//			MotorStart(&motor1);
+			ButtonsReg &= ~ButtonLF;
+			MotorSetSpeed(&motor1, 100);
+			MotorSetDir(&motor1, 1);
+			//MotorStart(&motor1);
+			MotorTakeFewSteps(&motor1, 100);
 		}
 		if(ButtonsReg & ButtonRT)
 		{
-//			MotorStop(&motor1);
-//			ButtonsReg &= ~ButtonRT;
-//			motor1.SetDir(1);
-//			MotorStart(&motor1);
+			ButtonsReg &= ~ButtonRT;
+			MotorSetDir(&motor1, 0);
+			//MotorStart(&motor1);
+			MotorTakeFewSteps(&motor1, 100);
 		}
 		if(ButtonsReg & ButtonESC)
 		{
-//			MotorStop(&motor1);
-//			ButtonsReg &= ~ButtonESC;
+			ButtonsReg &= ~ButtonESC;
+
+			MotorStop(&motor1);
+			MotorReset(&motor1);
 		}
 		
 		ModbusProcess();
-		
-		// HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-			
 		
     /* USER CODE END WHILE */
 
@@ -222,8 +240,10 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void Motor1StepCounter(void)
 {
-	MotorStepCounter(&motor1);
-	MotorStart(&motor1);
+	if(motor1.motorIsRun != 0)
+	{
+		MotorStepCounter(&motor1);
+	}
 }
 /* USER CODE END 4 */
 

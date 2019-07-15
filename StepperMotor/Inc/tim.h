@@ -45,14 +45,17 @@ void MX_TIM4_Init(void);
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                                         
 /* USER CODE BEGIN Prototypes */
+// callback function for motor1
 void Timer2SetMotorSpeed(uint32_t speed);
 void Timer2SetOnePulseMode(void);
 void Timer2SetRunMode(void);
 void Timer2OnOff(uint32_t on_off);
 
-// old functions
-void Timer2Start(void);
-void Timer2Stop(void);
+// callback function for motor2
+void Timer3SetMotorSpeed(uint32_t speed);
+void Timer3SetOnePulseMode(void);
+void Timer3SetRunMode(void);
+void Timer3OnOff(uint32_t on_off);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
