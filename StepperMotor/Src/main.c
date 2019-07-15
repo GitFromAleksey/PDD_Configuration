@@ -96,6 +96,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USB_DEVICE_Init();
+  MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
@@ -108,6 +109,9 @@ int main(void)
 	Tim2StepCounter = Motor1StepCounter;
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);// | TIM_CHANNEL_2);
 	HAL_TIM_Base_Start_IT(&htim4);
+	
+	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_4, GPIO_PIN_SET);	
 //	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
 	
 	

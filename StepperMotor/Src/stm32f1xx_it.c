@@ -244,7 +244,7 @@ void TIM4_IRQHandler(void)
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
-	if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim4))
+	//if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim4))
 		Tim2StepCounter();
   /* USER CODE END TIM4_IRQn 1 */
 }
