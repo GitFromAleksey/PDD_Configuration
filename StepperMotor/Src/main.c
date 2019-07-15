@@ -100,7 +100,20 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
-	MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
+	//MotorInit(&motor1, SetDirMotor1, SetEnMotor1, Timer2Start, Timer2Stop);
+//	MotorInit_2
+//	(
+//	&motor1,
+//	// timer callbacks
+//	Timer2SetMotorSpeed,
+//	Timer2SetOnePulseMode,
+//	Timer2SetRunMode,
+//	Timer2OnOff,
+//	
+//	// GPIO callbacks
+//	SetMotor1En,
+//	SetMotor1Dir
+//	);
 	
 	ModbusInit(GetReadRegValue, SetReadRegValue, GetReadWriteRegValue, SetReadWriteRegValue, CDC_Transmit_FS, USB_Receive_FS);
 	
@@ -111,7 +124,7 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim4);
 	
 	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_4, GPIO_PIN_SET);	
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_SET);	
 //	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
 	
 	
@@ -121,7 +134,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+	//motor1.setMotorSpeed(10);
+	//motor1.SetEn(1);
   while (1)
   {
     //HAL_Delay(500);
@@ -131,22 +145,22 @@ int main(void)
 		
 		if(ButtonsReg & ButtonLF)
 		{
-			MotorStop(&motor1);
-			ButtonsReg &= ~ButtonLF;
-			motor1.SetDir(0);
-			MotorStart(&motor1);
+//			MotorStop(&motor1);
+//			ButtonsReg &= ~ButtonLF;
+//			motor1.SetDir(0);
+//			MotorStart(&motor1);
 		}
 		if(ButtonsReg & ButtonRT)
 		{
-			MotorStop(&motor1);
-			ButtonsReg &= ~ButtonRT;
-			motor1.SetDir(1);
-			MotorStart(&motor1);
+//			MotorStop(&motor1);
+//			ButtonsReg &= ~ButtonRT;
+//			motor1.SetDir(1);
+//			MotorStart(&motor1);
 		}
 		if(ButtonsReg & ButtonESC)
 		{
-			MotorStop(&motor1);
-			ButtonsReg &= ~ButtonESC;
+//			MotorStop(&motor1);
+//			ButtonsReg &= ~ButtonESC;
 		}
 		
 		ModbusProcess();

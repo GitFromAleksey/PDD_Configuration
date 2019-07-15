@@ -313,6 +313,34 @@ void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef* tim_encoderHandle)
 } 
 
 /* USER CODE BEGIN 1 */
+void Timer2SetMotorSpeed(uint32_t speed)
+{
+	if(speed >= 10000)
+		speed = 10000;
+	htim2.Init.Period = speed;
+	HAL_TIM_Base_Init(&htim2);
+}
+void Timer2SetOnePulseMode(void)
+{
+	HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_SINGLE);
+}
+void Timer2SetRunMode(void)
+{
+	HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_REPETITIVE);
+}
+void Timer2OnOff(uint32_t on_off)
+{
+	if(on_off == 0)
+	{
+		HAL_TIM_OC_Stop(&htim2, TIM_CHANNEL_2);
+	}
+	else
+	{
+		HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
+	}
+}
+
+// old functions
 void Timer2Start(void)
 {
 	HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
