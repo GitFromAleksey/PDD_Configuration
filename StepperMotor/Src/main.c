@@ -59,6 +59,7 @@ Motor motor2;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 void Motor1StepCounter(void);
+void Motor2StepCounter(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -137,17 +138,16 @@ int main(void)
 	
 	GlobalsInit();
 
-	Tim2StepCounter = Motor1StepCounter;
+
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);// | TIM_CHANNEL_2);
 	HAL_TIM_Base_Start_IT(&htim4);
 	
-	// motor 2
-	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
-	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_SET);	
-
 	// motor 1
+	Tim2StepCounter = Motor1StepCounter;
 	HAL_TIM_Base_Start_IT(&htim2);
-	//HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_2);
+	// motor 2
+	Tim3StepCounter = Motor2StepCounter;
+	HAL_TIM_Base_Start_IT(&htim3);
 	
   /* USER CODE END 2 */
 
@@ -159,22 +159,23 @@ int main(void)
     //HAL_Delay(500);
 		
 		EncoderCnt = (uint16_t)htim4.Instance->CNT;
-		Motor1Steps = motor2.steps;
+		Motor1Steps = motor1.steps;
+		Motor2Steps = motor2.steps;
 		
 		if(ButtonsReg & ButtonLF)
 		{
 			ButtonsReg &= ~ButtonLF;
 			MotorSetSpeed(&motor2, 10);
 			MotorSetDir(&motor2, 1);
-			MotorStart(&motor2);
-			//MotorTakeFewSteps(&motor2, 100);
+			//MotorStart(&motor2);
+			MotorTakeFewSteps(&motor2, 100);
 		}
 		if(ButtonsReg & ButtonRT)
 		{
 			ButtonsReg &= ~ButtonRT;
 			MotorSetDir(&motor2, 0);
-			MotorStart(&motor2);
-			// MotorTakeFewSteps(&motor2, 100);
+			//MotorStart(&motor2);
+			MotorTakeFewSteps(&motor2, 100);
 		}
 		if(ButtonsReg & ButtonESC)
 		{
@@ -243,6 +244,13 @@ void Motor1StepCounter(void)
 	if(motor1.motorIsRun != 0)
 	{
 		MotorStepCounter(&motor1);
+	}
+}
+void Motor2StepCounter(void)
+{
+	if(motor2.motorIsRun != 0)
+	{
+		MotorStepCounter(&motor2);
 	}
 }
 /* USER CODE END 4 */
