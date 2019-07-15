@@ -120,7 +120,7 @@ int main(void)
 	// motor2 init
 	MotorInit
 	(
-		&motor1,
+		&motor2,
 		100,	// motor speed
 		// timer callbacks
 		Timer3SetMotorSpeed,
@@ -143,7 +143,7 @@ int main(void)
 	
 	// motor 2
 	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_SET);	
+	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_SET);	
 
 	// motor 1
 	HAL_TIM_Base_Start_IT(&htim2);
@@ -159,29 +159,29 @@ int main(void)
     //HAL_Delay(500);
 		
 		EncoderCnt = (uint16_t)htim4.Instance->CNT;
-		Motor1Steps = motor1.steps;
+		Motor1Steps = motor2.steps;
 		
 		if(ButtonsReg & ButtonLF)
 		{
 			ButtonsReg &= ~ButtonLF;
-			MotorSetSpeed(&motor1, 100);
-			MotorSetDir(&motor1, 1);
-			//MotorStart(&motor1);
-			MotorTakeFewSteps(&motor1, 100);
+			MotorSetSpeed(&motor2, 10);
+			MotorSetDir(&motor2, 1);
+			MotorStart(&motor2);
+			//MotorTakeFewSteps(&motor2, 100);
 		}
 		if(ButtonsReg & ButtonRT)
 		{
 			ButtonsReg &= ~ButtonRT;
-			MotorSetDir(&motor1, 0);
-			//MotorStart(&motor1);
-			MotorTakeFewSteps(&motor1, 100);
+			MotorSetDir(&motor2, 0);
+			MotorStart(&motor2);
+			// MotorTakeFewSteps(&motor2, 100);
 		}
 		if(ButtonsReg & ButtonESC)
 		{
 			ButtonsReg &= ~ButtonESC;
 
-			MotorStop(&motor1);
-			MotorReset(&motor1);
+			MotorStop(&motor2);
+			MotorReset(&motor2);
 		}
 		
 		ModbusProcess();
