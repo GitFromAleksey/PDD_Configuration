@@ -45,6 +45,9 @@ void SetMotor1Dir(uint32_t dir);
 	 
 void SetMotor2En(uint32_t en);
 void SetMotor2Dir(uint32_t dir);
+
+// digital inputs
+uint32_t GetDigitalInputsState(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

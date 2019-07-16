@@ -93,14 +93,20 @@ void MotorReset(Motor *motor)
 
 void MotorStart(Motor *motor)
 {
-	motor->setMotorEn(1);
-	motor->timerOnOff(1);
-	motor->motorIsRun = 1;
+	if(motor->motorIsRun == 0)
+	{
+		motor->setMotorEn(1);
+		motor->timerOnOff(1);
+		motor->motorIsRun = 1;
+	}
 }
 
 void MotorStop(Motor *motor)
 {
-	motor->timerOnOff(0);
-	motor->setMotorEn(0);
-	motor->motorIsRun = 0;
+	//if(motor->motorIsRun == 1)
+	{
+		motor->timerOnOff(0);
+		motor->setMotorEn(0);
+		motor->motorIsRun = 0;
+	}
 }

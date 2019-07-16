@@ -511,6 +511,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>digitalInputs</GroupName>
+          <Files>
+            <File>
+              <FileName>digitalInputs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\digitalInputs\digitalInputs.c</FilePath>
+            </File>
+            <File>
+              <FileName>digitalInputs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\digitalInputs\digitalInputs.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
