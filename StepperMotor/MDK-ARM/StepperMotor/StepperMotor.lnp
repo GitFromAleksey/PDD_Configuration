@@ -4,6 +4,7 @@
 "steppermotor\modbus.o"
 "steppermotor\globals.o"
 "steppermotor\digitalinputs.o"
+"steppermotor\digitaloutputs.o"
 "steppermotor\main.o"
 "steppermotor\gpio.o"
 "steppermotor\tim.o"

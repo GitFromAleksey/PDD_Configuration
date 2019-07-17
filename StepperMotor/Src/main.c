@@ -29,7 +29,8 @@
 #include "motors/motor.h"
 #include "modbus/modbus.h"
 #include "globals/globals.h"
-#include "digitalInputs/digitalInputs.h"
+#include "dio/digitalInputs.h"
+#include "dio/digitalOutputs.h"
 #include "stm32f1xx_it.h"
 #include "usbd_cdc_if.h"
 /* USER CODE END Includes */
@@ -52,6 +53,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint32_t WorkMode;
+
 Motor motor1;
 Motor motor2;
 /* USER CODE END PV */
@@ -140,6 +143,7 @@ int main(void)
 	GlobalsInit();
 
 	DI_Init(GetDigitalInputsState);
+	DO_Init(SetReset_PE_Signal, ASF_SignalOnOff);
 
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);// | TIM_CHANNEL_2);
 	HAL_TIM_Base_Start_IT(&htim4);
@@ -155,47 +159,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	
+	WorkMode = MODE_ON;
   while (1)
   {
 		ModbusProcess();
 		DI_Process();
 
-    //HAL_Delay(500);
 		
-		EncoderCnt = (uint16_t)htim4.Instance->CNT;
-		Motor1Steps = motor1.steps;
-		Motor2Steps = motor2.steps;
+		RR_EncoderCnt = (uint16_t)htim4.Instance->CNT;
+		RR_Motor1Steps = motor1.steps;
+		RR_Motor2Steps = motor2.steps;
+		RR_DI_Inputs = DI_GetInputReg();
 		
-		if(DI_CheckInput(FLAT_BACK_LIMIT) == 1)
-		//if(ButtonsReg & ButtonLF)
-		{
-			if(motor2.motorIsRun == 0)
-			{
-				ButtonsReg &= ~ButtonLF;
-				MotorSetSpeed(&motor2, 10);
-				MotorSetDir(&motor2, 1);
-				MotorStart(&motor2);
-				//MotorTakeFewSteps(&motor2, 500);
-			}
-		}
-		
-//		if(ButtonsReg & ButtonRT)
-//		{
-//			ButtonsReg &= ~ButtonRT;
-//			MotorSetDir(&motor2, 0);
-//			MotorStart(&motor2);
-//			//MotorTakeFewSteps(&motor2, 500);
-//		}
-		
-		if(DI_CheckInput(FLAT_BACK_LIMIT) == 0)
-		//if(ButtonsReg & ButtonESC)
-		{
-			ButtonsReg &= ~ButtonESC;
 
-			MotorStop(&motor2);
-			MotorReset(&motor2);
-		}
 		
 
 		

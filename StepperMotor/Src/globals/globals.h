@@ -3,7 +3,15 @@
 
 #include "stdint.h"
 
-#define READ_REGS_SIZE				4
+
+// work modes defines
+#define MODE_ON								(uint32_t)0x00000001
+#define MODE_FBCS							(uint32_t)0x00000002	// Flatbad Control System
+
+#define MODE_END							(uint32_t)0xFFFFFFFF
+
+
+#define READ_REGS_SIZE				5
 #define READ_WRITE_REGS_SIZE	26
 
 extern uint16_t ReadRegs[READ_REGS_SIZE];
@@ -17,10 +25,11 @@ extern uint16_t ReadRegs[READ_REGS_SIZE];
 #define ButtonAUTO								(uint16_t)(1<<6)
 #define Button2P									(uint16_t)(1<<7)
 
-#define ButtonsReg								ReadRegs[0]
-#define EncoderCnt								ReadRegs[1]
-#define Motor1Steps								ReadRegs[2]
-#define Motor2Steps								ReadRegs[3]
+#define RR_ButtonsReg							ReadRegs[0]
+#define RR_EncoderCnt							ReadRegs[1]
+#define RR_Motor1Steps						ReadRegs[2]
+#define RR_Motor2Steps						ReadRegs[3]
+#define RR_DI_Inputs							ReadRegs[4]
 
 extern uint16_t ReadWriteRegs[READ_WRITE_REGS_SIZE];
 

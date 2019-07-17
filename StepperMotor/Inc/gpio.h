@@ -48,6 +48,10 @@ void SetMotor2Dir(uint32_t dir);
 
 // digital inputs
 uint32_t GetDigitalInputsState(void);
+
+// digital outputs
+void SetReset_PE_Signal(uint32_t set_reset);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

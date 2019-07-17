@@ -511,17 +511,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>digitalInputs</GroupName>
+          <GroupName>dio</GroupName>
           <Files>
             <File>
               <FileName>digitalInputs.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\digitalInputs\digitalInputs.c</FilePath>
+              <FilePath>..\Src\dio\digitalInputs.c</FilePath>
             </File>
             <File>
               <FileName>digitalInputs.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Src\digitalInputs\digitalInputs.h</FilePath>
+              <FilePath>..\Src\dio\digitalInputs.h</FilePath>
+            </File>
+            <File>
+              <FileName>digitalOutputs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\dio\digitalOutputs.c</FilePath>
+            </File>
+            <File>
+              <FileName>digitalOutputs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\dio\digitalOutputs.h</FilePath>
             </File>
           </Files>
         </Group>

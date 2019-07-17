@@ -22,6 +22,11 @@ uint32_t DI_CheckInput(uint32_t input)
 	}
 }
 
+uint32_t DI_GetInputReg(void)
+{
+	return inputs;
+}
+
 void DI_Process(void)
 {
 	inputs = getDigitalInputsState();

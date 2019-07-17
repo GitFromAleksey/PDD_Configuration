@@ -63,6 +63,8 @@ void TIM4_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 extern void (*Tim2StepCounter)(void);
 extern void (*Tim3StepCounter)(void);
+
+void ASF_SignalOnOff(uint32_t period, uint32_t enable);
 /* USER CODE END EFP */
 
 #ifdef __cplusplus

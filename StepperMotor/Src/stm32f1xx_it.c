@@ -42,6 +42,11 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+uint32_t ASF_period;
+uint32_t ASF_enable;
+
+void ASF_process(void);
+
 void (*Tim2StepCounter)(void);
 void (*Tim3StepCounter)(void);
 /* USER CODE END PV */
@@ -193,6 +198,9 @@ void SysTick_Handler(void)
 		myTicks = 0;
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 	}
+	
+	ASF_process();
+
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -265,6 +273,28 @@ void TIM4_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+void ASF_SignalOnOff(uint32_t period, uint32_t enable)
+{
+	ASF_period = period;
+	ASF_enable = enable;
+}
 
+void ASF_process(void)
+{
+	static uint32_t ASF_periodCnt = 0;
+	
+	if(ASF_enable == 1)
+	{
+		if(++ASF_periodCnt >= ASF_period)
+		{
+			ASF_periodCnt = 0;
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_7);
+		}
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+	}
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

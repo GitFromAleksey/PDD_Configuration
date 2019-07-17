@@ -9,6 +9,7 @@
 
 void DI_Init(uint32_t (*_getDigitalInputsState)(void));
 uint32_t DI_CheckInput(uint32_t input);
+uint32_t DI_GetInputReg(void);
 void DI_Process(void);
 
 #endif /*_DIGITALINPUTS_H */
